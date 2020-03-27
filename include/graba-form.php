@@ -11,14 +11,14 @@ defined( 'ABSPATH' ) || die();
 // logeados y el otro para el resto)
 // Lo que viene tras admin_post_ y admin_post_nopriv_ tiene que coincidir con
 // el valor del campo input con nombre "action" del formulario enviado.
-add_action( 'admin_post_kfp-form-base', 'kfp_graba_ticket' );
-add_action( 'admin_post_nopriv_kfp-form-base', 'kfp_graba_ticket' );
+add_action( 'admin_post_kfp-form-base', 'kfp_form_base_graba_ticket' );
+add_action( 'admin_post_nopriv_kfp-form-base', 'kfp_form_base_graba_ticket' );
 /**
  * Graba los datos enviados por el formulario como un nuevo CPT kfp-taller
  *
  * @return void
  */
-function kfp_graba_ticket() {
+function kfp_form_base_graba_ticket() {
 	global $wpdb;
 	// Si viene en $_POST aprovecha uno de los campos que crea wp_nonce para volver al form.
 	$url_origen = home_url( '/' );
