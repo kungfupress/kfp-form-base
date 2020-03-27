@@ -21,7 +21,7 @@ function kfp_form_base_crea_tablas() {
 	$tabla_ticket    = $wpdb->prefix . 'ticket';
 	$charset_collate = $wpdb->get_charset_collate();
 
-	$query = "CREATE TABLE IF NOT EXISTS $tabla_ticket (
+	$query = "CREATE TABLE $tabla_ticket (
 		id mediumint(9) NOT NULL AUTO_INCREMENT,
 		asunto varchar(250) NOT NULL,
 		descripcion text NOT NULL,
