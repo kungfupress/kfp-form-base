@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) || die();
 
 register_activation_hook( __FILE__, 'kfp_form_base_taxonomia_categoria' );
-add_action( 'init', 'kfp_taxonomia_categoria', 0 );
+add_action( 'init', 'kfp_form_base_taxonomia_categoria', 0 );
 /**
  * Registra la taxonomía con lo mínimo indispensable
  *
@@ -20,7 +20,7 @@ function kfp_form_base_taxonomia_categoria() {
 		'hierarchical'      => false,
 		'show_admin_column' => true,
 	);
-	register_taxonomy( 'kfp-ticket-categoria', array(), $args );
+	register_taxonomy( 'kfp-form-base-ticket-categoria', array(), $args );
 }
 
 add_action( 'init', 'kfp_form_base_categoria_agregar', 1 );

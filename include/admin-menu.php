@@ -78,7 +78,7 @@ function kpf_form_base_admin_scripts() {
 		'ajax_object',
 		array(
 			'ajax_url'   => admin_url( 'admin-ajax.php' ),
-			'ajax_nonce' => wp_create_nonce( 'kfp_ticket_borrar_' . admin_url( 'admin-ajax.php' ) ),
+			'ajax_nonce' => wp_create_nonce( 'kfp_form_base_ticket_borrar_' . admin_url( 'admin-ajax.php' ) ),
 		)
 	);
 	wp_enqueue_script( 'kfp-form-base-admin' );
@@ -86,18 +86,18 @@ function kpf_form_base_admin_scripts() {
 }
 
 // Prepara los hooks para borrar tickets con ajax.
-add_action( 'wp_ajax_kfp_ticket_borrar', 'kfp_ticket_borrar' );
+add_action( 'wp_ajax_kfp_form_base_ticket_borrar', 'kfp_form_base_ticket_borrar' );
 /**
  * Borra el ticket seleccionado
  *
  * @return void
  */
-function kfp_ticket_borrar() {
+function kfp_form_base_ticket_borrar() {
 	global $wpdb;
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX && isset( $_POST['nonce'] )
 		&& wp_verify_nonce(
 			sanitize_text_field( wp_unslash( $_POST['nonce'] ) ),
-			'kfp_ticket_borrar_' . admin_url( 'admin-ajax.php' )
+			'kfp_form_base_ticket_borrar_' . admin_url( 'admin-ajax.php' )
 			)
 		) {
 		$ticket_id = filter_input( INPUT_POST, 'ticket_id', FILTER_SANITIZE_NUMBER_INT );
